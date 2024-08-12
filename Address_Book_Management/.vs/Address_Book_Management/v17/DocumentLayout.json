@@ -1,0 +1,41 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "E:\\CPP_Demo\\Address_Book_Management\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{EFA2C32E-9C6C-486D-8308-BB74DB6FCA0E}|Project1\\Project1.vcxproj|E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{EFA2C32E-9C6C-486D-8308-BB74DB6FCA0E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\Address_Book_Management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Address_Book_Management.cpp",
+              "DocumentMoniker": "E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
+              "RelativeDocumentMoniker": "Project1\\Address_Book_Management.cpp",
+              "ToolTip": "E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
+              "RelativeToolTip": "Project1\\Address_Book_Management.cpp",
+              "ViewState": "AQIAAAkAAAAAAAAAAAAmwIwAAAAhAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2024-08-12T12:09:12.598Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
