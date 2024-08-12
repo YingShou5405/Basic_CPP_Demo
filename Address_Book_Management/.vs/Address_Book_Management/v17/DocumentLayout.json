@@ -1,9 +1,9 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\CPP_Demo\\Address_Book_Management\\",
+  "WorkspaceRootPath": "C:\\Users\\Administrator\\Documents\\GitHub\\Basic_CPP_Demo\\Address_Book_Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EFA2C32E-9C6C-486D-8308-BB74DB6FCA0E}|Project1\\Project1.vcxproj|E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "AbsoluteMoniker": "D:0:0:{EFA2C32E-9C6C-486D-8308-BB74DB6FCA0E}|Project1\\Project1.vcxproj|C:\\Users\\Administrator\\Documents\\GitHub\\Basic_CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{EFA2C32E-9C6C-486D-8308-BB74DB6FCA0E}|Project1\\Project1.vcxproj|solutionrelative:Project1\\Address_Book_Management.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
@@ -24,11 +24,11 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Address_Book_Management.cpp",
-              "DocumentMoniker": "E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
+              "DocumentMoniker": "C:\\Users\\Administrator\\Documents\\GitHub\\Basic_CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
               "RelativeDocumentMoniker": "Project1\\Address_Book_Management.cpp",
-              "ToolTip": "E:\\CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
+              "ToolTip": "C:\\Users\\Administrator\\Documents\\GitHub\\Basic_CPP_Demo\\Address_Book_Management\\Project1\\Address_Book_Management.cpp",
               "RelativeToolTip": "Project1\\Address_Book_Management.cpp",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAmwIwAAAAhAAAA",
+              "ViewState": "AQIAAJ8AAAAAAAAAAAAAAAUBAAA2AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
               "WhenOpened": "2024-08-12T12:09:12.598Z",
               "EditorCaption": ""

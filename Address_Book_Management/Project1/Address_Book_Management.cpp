@@ -8,15 +8,15 @@
 using namespace std;
 
 void showMenu() {
-	cout << "******通讯录管理系统********" << endl;
-	cout << "请输入与功能对应的数字：" << endl;
-	cout << "1、添加联系人" << endl;
-	cout << "2、显示联系人" << endl;
-	cout << "3、删除联系人" << endl;
-	cout << "4、查找联系人" << endl;
-	cout << "5、修改联系人" << endl;
-	cout << "6、清空联系人" << endl;
-	cout << "0、退出" << endl;
+	cout << "******Address_Book_Management********" << endl;
+	cout << "please enter the corresponding number：" << endl;
+	cout << "1、add contacts" << endl;
+	cout << "2、show contacts" << endl;
+	cout << "3、delete contacts" << endl;
+	cout << "4、search contacts" << endl;
+	cout << "5、modify contacts" << endl;
+	cout << "6、clear the Address book" << endl;
+	cout << "0、exit" << endl;
 };
 
 struct contacts //联系人结构体
@@ -59,7 +59,7 @@ int is_contacts_exists(Address_Books* Address_Books) {
 	string user_name;
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cout << "请输入联系人姓名：";getline(cin,user_name);
+	cout << "please enter the name：";getline(cin,user_name);
 	for (int i = 0; i < Address_Books->curr_size; i++) {
 		if (user_name == Address_Books->contactsArray[i].name) {
 			return i;
@@ -71,46 +71,46 @@ int is_contacts_exists(Address_Books* Address_Books) {
 //添加联系人
 void add_contacts(Address_Books* Address_Books) {
 	if (Address_Books->curr_size >= MAX_LENGTH) {
-		cout << "添加失败！用户数量已满，";
+		cout << "failed to add, the address book is already full，";
 		system("pasue");
 		system("cls");
 		return;
 	}
 	string name, sex, phone, address,age;
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cout << "请输入添加联系人的信息："<<endl;
-	cout << "姓名：";getline(cin,name);
+	cout << "please enter the contacts info: "<<endl;
+	cout << "name: ";getline(cin,name);
 	Address_Books->contactsArray[Address_Books->curr_size].name = name;
 	while (true) {
-		cout << "性别："; getline(cin,sex);
+		cout << "sex:"; getline(cin,sex);
 		if (sex == "male" or sex == "female") {
 			Address_Books->contactsArray[Address_Books->curr_size].sex = sex;
 			break;
 		}
-		cout << "您输入的性别有误！请输入male或者female...:" << endl;
+		cout << "please enter male or female...: " << endl;
 	}
 	while (true) {
-		cout << "年龄："; getline(cin, age);
+		cout << "age: "; getline(cin, age);
 		if (isNumber(age)) {
 			if (stoi(age) > 0 && stoi(age) <= 120) {
 				Address_Books->contactsArray[Address_Books->curr_size].age = stoi(age);
 				break;
 			}
 		}
-		cout << "您输入的年龄不合法！请输入1-120内的整数...:" << endl;
+		cout << "age is illegal! The range is 0 to 120...: " << endl;
 	}
 	while (true) {
-		cout << "电话："; getline(cin,phone);
-		if (phone.length() == 11&&isNumber(phone)) {
+		cout << "phone: "; getline(cin,phone);
+		if (phone.length() == 11 && isNumber(phone)) {
 			Address_Books->contactsArray[Address_Books->curr_size].phone = phone;
 			break;
 		}
-		cout << "您输入的号码格式不正确！请重新输入!" << endl;
+		cout << "Phone number is illegal! Please enter the correct number...: " << endl;
 	}
-	cout << "地址："; getline(cin,address);
+	cout << "address: "; getline(cin,address);
 	Address_Books->contactsArray[Address_Books->curr_size].address = address;
 	Address_Books->curr_size++;
-	cout << "添加成功，";
+	cout << "success!";
 	system("pause");
 	system("cls");
 }
@@ -119,14 +119,14 @@ void add_contacts(Address_Books* Address_Books) {
 void  show_contacts(Address_Books* Address_Books) {
 	if (Address_Books->curr_size == 0) {
 		system("cls");
-		cout << "联系人为空！" ;
+		cout << "The Address Book is empty! " ;
 		system("pause");
 		system("cls");
 		return;
 	}
 	if (Address_Books->curr_size <= RECORDS_PER_PAGE) {
-		cout << "联系人信息" << endl;
-		cout << "序号\t"<<"姓名\t" << "性别\t" << "年龄\t" << "电话\t" << "地址" << endl;
+		cout << "Contacts Info" << endl;
+		cout << "ID\t"<<"NAME\t" << "SEX\t" << "AGE\t" << "PHONE\t" << "ADDRESS" << endl;
 		for (int i = 0; i < Address_Books->curr_size; i++) {
 			print_contacts(Address_Books, i);
 		}
@@ -138,12 +138,12 @@ void  show_contacts(Address_Books* Address_Books) {
 		while (true) {
 			system("cls");
 			int bias = page * RECORDS_PER_PAGE;
-			cout << "********联系人信息********" << endl;
-			cout << "序号\t"<<"姓名\t" << "性别\t" << "年龄\t" << "电话\t" << "地址" << endl;
+			cout << "********Contacts Info********" << endl;
+			cout << "id\t"<<"name\t" << "sex\t" << "age\t" << "phone\t" << "address" << endl;
 			for (int i = 0; i < min(RECORDS_PER_PAGE,(Address_Books->curr_size - bias)); i++) {
 				print_contacts(Address_Books, i + bias);
 			}
-			cout << "请按w或者s翻页,或者按e退出...:";
+			cout << "please enter w or s to page up or page down, or enter e to exit...:";
 			cin >> operation;
 			if (operation == 'w' && page != 0) {
 				page--; system("cls"); 
@@ -162,7 +162,7 @@ void  show_contacts(Address_Books* Address_Books) {
 void del_contacts(Address_Books * Address_Books) {
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
-		cout << "您所要删除的联系人不在列表当中...";
+		cout << "The person you want to delete is not in the list...";
 		system("pause");
 		system("cls");
 		return;
@@ -170,10 +170,10 @@ void del_contacts(Address_Books * Address_Books) {
 	string flag;
 	while (true) {
 		system("cls");
-		cout << "您所查找的联系人信息为:" << endl;
-		cout << "序号\t" << "姓名\t" << "性别\t" << "年龄\t" << "电话\t" << "地址" << endl;
+		cout << "The info you want to search:" << endl;
+		cout << "ID\t" << "NAME\t" << "SEX\t" << "AGE\t" << "PHONE\t" << "ADDRESS" << endl;
 		print_contacts(Address_Books, indices);
-		cout << "您确定要删除吗?(y/n)：";
+		cout << "Confirmed to delete?(y/n)：";
 		getline(cin,flag);
 		if ( flag == "y") {
 			for (int i = indices; i < Address_Books->curr_size - 1; i++) {
@@ -184,12 +184,12 @@ void del_contacts(Address_Books * Address_Books) {
 				Address_Books->contactsArray[i].address = Address_Books->contactsArray[i + 1].address;
 			}
 			Address_Books->curr_size--;
-			cout << "联系人已删除,";
+			cout << "Confirmed,";
 			system("pause");system("cls");
 			break;
 		}
 		else if (flag == "n") {
-			cout << "您选择不删除,";
+			cout << "Canceled,";
 			system("pause");
 			system("cls");
 			break;
@@ -203,58 +203,58 @@ void find_contacts(Address_Books* Address_Books) {
 	system("cls");
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
-		cout << "您所查找的联系人不在通讯录当中！";
+		cout << "The contacts you want to search is not in the list！";
 		system("pause"); system("cls");
 		return;
 	}
-	cout << "您查找的联系人信息为：\n";
-	cout << "序号\t" << "姓名\t" << "性别\t" << "年龄\t" << "电话\t" << "地址" << endl;
+	cout << "The info you want to search：\n";
+	cout << "ID\t" << "NAME\t" << "SEX\t" << "AGE\t" << "PHONE\t" << "ADDRESS" << endl;
 	print_contacts(Address_Books, indices);
 	system("pause");
 }
 
 //修改联系人
-void modify_liaison(Address_Books* Address_Books) {
+void modify_contacts(Address_Books* Address_Books) {
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
-		cout << "您所想修改的用户不在通讯录中！";
+		cout << "Contacts not in the list！";
 		system("pause");
 		system("cls");
 		return;
 	}
 	string name, sex, phone, address,age;
-	cout << "请重新输入你想修改的用户信息" << endl;
-	cout << "姓名："; getline(cin,name);
+	cout << "Please re-enter  the Contacts Info" << endl;
+	cout << "NAME: "; getline(cin,name);
 	while (true) {
-		cout << "性别："; getline(cin,sex);
+		cout << "SEX: "; getline(cin,sex);
 		if (sex == "male" or sex == "female") {
 			Address_Books->contactsArray[indices].sex = sex;
 			break;
 		}
-		cout << "您输入的性别有误！请输入male或者female...:" << endl;
+		cout << "Wrong Sex！Please enter male or female...:" << endl;
 	}
 	while (true) {
-		cout << "年龄：";getline(cin, age);
+		cout << "AGE: ";getline(cin, age);
 		if (isNumber(age)) {
 			if (stoi(age) > 0 && stoi(age) <= 120) {
 				Address_Books->contactsArray[indices].age = stoi(age);
 				break;
 			}
 		}
-		cout << "您输入的年龄不合法！请输入1-120内的整数...:" << endl;
+		cout << "iLLegal Age！Range is 1 to 120...:" << endl;
 	}
 	while (true) {
-		cout << "电话："; getline(cin,phone);
+		cout << "PHONE: "; getline(cin,phone);
 		if (phone.length() == 11 && isNumber(phone)) {
 			Address_Books->contactsArray[indices].phone = phone;
 			break;
 		}
-		cout << "您输入的号码格式不正确！请重新输入!" << endl;
+		cout << "iLLegal Number! Please enter the Correct Number!" << endl;
 	}
-	cout << "地址："; getline(cin,address);
+	cout << "Address: "; getline(cin,address);
 	Address_Books->contactsArray[indices].address = address;
 	system("cls");
-	cout << "修改成功！";
+	cout << "Success！";
 	system("pause");
 }
 
@@ -263,15 +263,15 @@ void clear_Address_Books(Address_Books* Address_Books) {
 	string flag;
 	while (true) {
 		system("cls");
-		cout << "确定要清空吗？(y/n)：";
+		cout << "Confirm to Clear？(y/n)：";
 		getline(cin, flag);
 		if (flag == "y") {
 			Address_Books->curr_size = 0;
-			cout << "通讯录已清空，";
+			cout << "Cleared";
 			system("pause"); system("cls"); break;
 		}
 		else if (flag == "n") {
-			cout << "取消清空，";
+			cout << "Canceled";
 			system("pause"); system("cls"); break;
 		}
 		system("cls");
@@ -301,13 +301,13 @@ int main() {
 			find_contacts(&Address_Book);
 			break;
 		case 5:// 修改联系人
-			modify_liaison(&Address_Book);			
+			modify_contacts(&Address_Book);			
 			break;
 		case 6:// 删除通讯录
 			clear_Address_Books(&Address_Book);
 			break;
 		case 0: //退出系统
-			cout << "感谢使用，下次再见(Thanks for using)，" << endl;
+			cout << "Thanks for using，" << endl;
 			system("pause");
 			return 0;
 		default:
