@@ -1,0 +1,4 @@
+﻿  源.cpp
+C:\Users\Administrator\Documents\GitHub\Basic_CPP_Demo\Tetris\Tetris\源.cpp(167,20): warning C4805: “==”: 在操作中将类型“BOOL”与类型“bool”混合不安全
+C:\Users\Administrator\Documents\GitHub\Basic_CPP_Demo\Tetris\Tetris\源.cpp(26,1): warning C4715: “rotate”: 不是所有的控件路径都返回值
+  Tetris.vcxproj -> C:\Users\Administrator\Documents\GitHub\Basic_CPP_Demo\Tetris\x64\Debug\Tetris.exe

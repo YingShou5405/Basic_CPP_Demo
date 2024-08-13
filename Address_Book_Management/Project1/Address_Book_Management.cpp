@@ -3,23 +3,23 @@
 #include<stdlib.h>
 #include<cctype>
 
-#define MAX_LENGTH  1000 //¶¨ÒåÍ¨Ñ¶Â¼µÄ×î´ó³¤¶È
-#define RECORDS_PER_PAGE 3 //¶¨ÒåÃ¿Ò³ÐÅÏ¢³¤¶È
+#define MAX_LENGTH  1000 //ï¿½ï¿½ï¿½ï¿½Í¨Ñ¶Â¼ï¿½ï¿½ï¿½ï¿½ó³¤¶ï¿½
+#define RECORDS_PER_PAGE 3 //ï¿½ï¿½ï¿½ï¿½Ã¿Ò³ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½ï¿½
 using namespace std;
 
 void showMenu() {
 	cout << "******Address_Book_Management********" << endl;
-	cout << "please enter the corresponding number£º" << endl;
-	cout << "1¡¢add contacts" << endl;
-	cout << "2¡¢show contacts" << endl;
-	cout << "3¡¢delete contacts" << endl;
-	cout << "4¡¢search contacts" << endl;
-	cout << "5¡¢modify contacts" << endl;
-	cout << "6¡¢clear the Address book" << endl;
-	cout << "0¡¢exit" << endl;
+	cout << "please enter the corresponding numberï¿½ï¿½" << endl;
+	cout << "1ï¿½ï¿½add contacts" << endl;
+	cout << "2ï¿½ï¿½show contacts" << endl;
+	cout << "3ï¿½ï¿½delete contacts" << endl;
+	cout << "4ï¿½ï¿½search contacts" << endl;
+	cout << "5ï¿½ï¿½modify contacts" << endl;
+	cout << "6ï¿½ï¿½clear the Address book" << endl;
+	cout << "0ï¿½ï¿½exit" << endl;
 };
 
-struct contacts //ÁªÏµÈË½á¹¹Ìå
+struct contacts //ï¿½ï¿½Ïµï¿½Ë½á¹¹ï¿½ï¿½
 {
 		string name;
 		string sex;
@@ -31,10 +31,10 @@ struct contacts //ÁªÏµÈË½á¹¹Ìå
 struct Address_Books
 {
 	struct contacts contactsArray[MAX_LENGTH];
-	int curr_size; // ¼ÇÂ¼µ±Ç°Í¨Ñ¶Â¼ÄÚµÄÈËÊý
+	int curr_size; // ï¿½ï¿½Â¼ï¿½ï¿½Ç°Í¨Ñ¶Â¼ï¿½Úµï¿½ï¿½ï¿½ï¿½ï¿½
 };
 
-//ÅÐ¶ÏÄêÁäÊÇ·ñºÏ·¨
+//ï¿½Ð¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç·ï¿½Ï·ï¿½
 bool isNumber(string age) {
 	for (char ch : age) {
 		if (!isdigit(ch)) {
@@ -44,7 +44,7 @@ bool isNumber(string age) {
 	return true;
 }
 
-// ´òÓ¡ÁªÂçÈË
+// ï¿½ï¿½Ó¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 void print_contacts(Address_Books* Address_Book, int indices) {
 	cout << indices << "\t";
 	cout << Address_Book->contactsArray[indices].name << "\t";
@@ -54,12 +54,12 @@ void print_contacts(Address_Books* Address_Book, int indices) {
 	cout << Address_Book->contactsArray[indices].address << endl;
 }
 
-// ·µ»ØÁªÏµÈËËùÔÚÊý×éÏÂ±í
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â±ï¿½
 int is_contacts_exists(Address_Books* Address_Books) {
 	string user_name;
 	cin.clear();
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cout << "please enter the name£º";getline(cin,user_name);
+	cout << "please enter the name: ";getline(cin,user_name);
 	for (int i = 0; i < Address_Books->curr_size; i++) {
 		if (user_name == Address_Books->contactsArray[i].name) {
 			return i;
@@ -68,10 +68,10 @@ int is_contacts_exists(Address_Books* Address_Books) {
 	return -1;
 }
 
-//Ìí¼ÓÁªÏµÈË
+//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 void add_contacts(Address_Books* Address_Books) {
 	if (Address_Books->curr_size >= MAX_LENGTH) {
-		cout << "failed to add, the address book is already full£¬";
+		cout << "failed to add, the address book is already full, ";
 		system("pasue");
 		system("cls");
 		return;
@@ -83,7 +83,7 @@ void add_contacts(Address_Books* Address_Books) {
 	Address_Books->contactsArray[Address_Books->curr_size].name = name;
 	while (true) {
 		cout << "sex:"; getline(cin,sex);
-		if (sex == "male" or sex == "female") {
+		if (sex == "male" || sex == "female") {
 			Address_Books->contactsArray[Address_Books->curr_size].sex = sex;
 			break;
 		}
@@ -115,7 +115,7 @@ void add_contacts(Address_Books* Address_Books) {
 	system("cls");
 }
 
-//ÏÔÊ¾ÁªÏµÈË
+//ï¿½ï¿½Ê¾ï¿½ï¿½Ïµï¿½ï¿½
 void  show_contacts(Address_Books* Address_Books) {
 	if (Address_Books->curr_size == 0) {
 		system("cls");
@@ -158,7 +158,7 @@ void  show_contacts(Address_Books* Address_Books) {
 	}
 }
 
-//É¾³ýÁªÏµÈË
+//É¾ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 void del_contacts(Address_Books * Address_Books) {
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
@@ -173,7 +173,7 @@ void del_contacts(Address_Books * Address_Books) {
 		cout << "The info you want to search:" << endl;
 		cout << "ID\t" << "NAME\t" << "SEX\t" << "AGE\t" << "PHONE\t" << "ADDRESS" << endl;
 		print_contacts(Address_Books, indices);
-		cout << "Confirmed to delete?(y/n)£º";
+		cout << "Confirmed to delete?(y/n)ï¿½ï¿½";
 		getline(cin,flag);
 		if ( flag == "y") {
 			for (int i = indices; i < Address_Books->curr_size - 1; i++) {
@@ -198,26 +198,26 @@ void del_contacts(Address_Books * Address_Books) {
 	}
 }
 
-// ²éÕÒÁªÏµÈË
+// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 void find_contacts(Address_Books* Address_Books) {
 	system("cls");
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
-		cout << "The contacts you want to search is not in the list£¡";
+		cout << "The contacts you want to search is not in the listï¿½ï¿½";
 		system("pause"); system("cls");
 		return;
 	}
-	cout << "The info you want to search£º\n";
+	cout << "The info you want to searchï¿½ï¿½\n";
 	cout << "ID\t" << "NAME\t" << "SEX\t" << "AGE\t" << "PHONE\t" << "ADDRESS" << endl;
 	print_contacts(Address_Books, indices);
 	system("pause");
 }
 
-//ÐÞ¸ÄÁªÏµÈË
+//ï¿½Þ¸ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 void modify_contacts(Address_Books* Address_Books) {
 	int indices = is_contacts_exists(Address_Books);
 	if (indices == -1) {
-		cout << "Contacts not in the list£¡";
+		cout << "Contacts not in the listï¿½ï¿½";
 		system("pause");
 		system("cls");
 		return;
@@ -227,11 +227,11 @@ void modify_contacts(Address_Books* Address_Books) {
 	cout << "NAME: "; getline(cin,name);
 	while (true) {
 		cout << "SEX: "; getline(cin,sex);
-		if (sex == "male" or sex == "female") {
+		if (sex == "male" || sex == "female") {
 			Address_Books->contactsArray[indices].sex = sex;
 			break;
 		}
-		cout << "Wrong Sex£¡Please enter male or female...:" << endl;
+		cout << "Wrong Sexï¿½ï¿½Please enter male or female...:" << endl;
 	}
 	while (true) {
 		cout << "AGE: ";getline(cin, age);
@@ -241,7 +241,7 @@ void modify_contacts(Address_Books* Address_Books) {
 				break;
 			}
 		}
-		cout << "iLLegal Age£¡Range is 1 to 120...:" << endl;
+		cout << "iLLegal Ageï¿½ï¿½Range is 1 to 120...:" << endl;
 	}
 	while (true) {
 		cout << "PHONE: "; getline(cin,phone);
@@ -254,16 +254,16 @@ void modify_contacts(Address_Books* Address_Books) {
 	cout << "Address: "; getline(cin,address);
 	Address_Books->contactsArray[indices].address = address;
 	system("cls");
-	cout << "Success£¡";
+	cout << "Successï¿½ï¿½";
 	system("pause");
 }
 
-//Çå³ýÍ¨Ñ¶Â¼
+//ï¿½ï¿½ï¿½Í¨Ñ¶Â¼
 void clear_Address_Books(Address_Books* Address_Books) {
 	string flag;
 	while (true) {
 		system("cls");
-		cout << "Confirm to Clear£¿(y/n)£º";
+		cout << "Confirm to Clearï¿½ï¿½(y/n)ï¿½ï¿½";
 		getline(cin, flag);
 		if (flag == "y") {
 			Address_Books->curr_size = 0;
@@ -288,26 +288,26 @@ int main() {
 		showMenu();
 		cin >> select;
 		switch (select) {
-		case 1: // Ìí¼ÓÁªÏµÈË
+		case 1: // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 			add_contacts(&Address_Book);
 			break;
-		case 2: // ÏÔÊ¾ÁªÏµÈË
+		case 2: // ï¿½ï¿½Ê¾ï¿½ï¿½Ïµï¿½ï¿½
 			show_contacts(&Address_Book);
 			break;
-		case 3: // É¾³ýÁªÏµÈË
+		case 3: // É¾ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 			del_contacts(&Address_Book);
 			break;
-		case 4 :// ²éÕÒÁªÏµÈË
+		case 4 :// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 			find_contacts(&Address_Book);
 			break;
-		case 5:// ÐÞ¸ÄÁªÏµÈË
+		case 5:// ï¿½Þ¸ï¿½ï¿½ï¿½Ïµï¿½ï¿½
 			modify_contacts(&Address_Book);			
 			break;
-		case 6:// É¾³ýÍ¨Ñ¶Â¼
+		case 6:// É¾ï¿½ï¿½Í¨Ñ¶Â¼
 			clear_Address_Books(&Address_Book);
 			break;
-		case 0: //ÍË³öÏµÍ³
-			cout << "Thanks for using£¬" << endl;
+		case 0: //ï¿½Ë³ï¿½ÏµÍ³
+			cout << "Thanks for usingï¿½ï¿½" << endl;
 			system("pause");
 			return 0;
 		default:
